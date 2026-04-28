@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>B2B SaaS AI Search Visibility Report</title>
+<meta name="description" content="A presentation-ready research dashboard showing how B2B SaaS brands are mentioned, ranked, and cited across ChatGPT, Perplexity, and Google AI Overviews." />
+<meta property="og:title" content="B2B SaaS AI Search Visibility Report" />
+<meta property="og:description" content="AI tools know SaaS brands, but they do not always cite brand-owned sources. Explore the visibility gap across 103 scored answers." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:opsz,wght@6..72,500;6..72,700;6..72,800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Premium report system — warm SaaS research aesthetic
+   ============================================================ */
+:root{
+  --bg:#f5ecdf;
+  --bg2:#fbf6ec;
+  --panel:#fffaf1;
+  --panel-strong:#fff7e7;
+  --ink:#0a1724;
+  --ink2:#203247;
+  --muted:#5c6d7e;
+  --soft:#83909f;
+  --line:rgba(10,23,36,.12);
+  --line2:rgba(10,23,36,.075);
+  --teal:#087f83;
+  --teal2:#12a4a6;
+  --blue:#24547d;
+  --amber:#c87508;
+  --green:#15855c;
+  --red:#b4473a;
+  --cream:#fffaf1;
+  --shadow:0 24px 80px rgba(10,23,36,.10);
+  --shadow2:0 12px 36px rgba(10,23,36,.065);
+  --radius:30px;
+  --radius2:20px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;background:radial-gradient(circle at 8% -5%,rgba(18,164,166,.16),transparent 30rem),radial-gradient(circle at 96% 3%,rgba(200,117,8,.14),transparent 24rem),linear-gradient(180deg,#fff9ef 0%,var(--bg) 48%,#efe2cf 100%);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(10,23,36,.024) 1px,transparent 1px),linear-gradient(90deg,rgba(10,23,36,.024) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.62),transparent 54%)}
+a{color:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.serif{font-family:Newsreader,Georgia,serif}.mono{font-family:'IBM Plex Mono',monospace}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px solid rgba(18,164,166,.45);outline-offset:3px;border-radius:12px}
+/* Navigation */
+.top{position:sticky;top:0;z-index:80;background:rgba(245,236,223,.78);backdrop-filter:blur(20px) saturate(155%);border-bottom:1px solid var(--line2)}
+.top-inner{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.035em;white-space:nowrap}.logo{width:40px;height:40px;border-radius:15px;background:linear-gradient(135deg,var(--ink),#173d58);color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;box-shadow:0 12px 26px rgba(10,23,36,.17)}
+.nav-toggle{display:none;border:1px solid var(--line);background:rgba(255,250,241,.82);border-radius:999px;min-height:42px;padding:0 14px;font-weight:850;color:var(--ink)}
+nav{display:flex;gap:4px;background:rgba(255,250,241,.66);padding:6px;border:1px solid var(--line2);border-radius:999px;overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:800;padding:9px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,transform .2s}nav a:hover,nav a.active{background:#fff;color:var(--ink);transform:translateY(-1px)}
+/* Hero */
+.hero{padding:78px 0 42px}.hero-grid{display:grid;grid-template-columns:minmax(0,1.17fr) minmax(330px,.83fr);gap:34px;align-items:stretch}.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(8,127,131,.22);border-radius:999px;background:rgba(255,255,255,.55);color:var(--teal);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal2);box-shadow:0 0 0 6px rgba(18,164,166,.12)}
+h1{font-family:Newsreader,Georgia,serif;font-size:clamp(44px,6vw,84px);line-height:.98;letter-spacing:-.055em;margin:22px 0 22px;max-width:12.2ch;text-wrap:balance}h1 em{color:var(--teal);font-style:italic;font-weight:500;text-decoration:underline;text-decoration-color:rgba(18,164,166,.22);text-decoration-thickness:.09em;text-underline-offset:.08em}.lead{font-size:clamp(18px,1.7vw,22px);color:var(--muted);max-width:760px;margin:0 0 26px}.lead strong{color:var(--ink)}.buttons{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:13px 18px;border-radius:999px;text-decoration:none;border:1px solid var(--line);background:rgba(255,250,241,.82);font-weight:850;box-shadow:0 8px 20px rgba(10,23,36,.06);transition:transform .2s,box-shadow .2s,background .2s}.btn.primary{background:linear-gradient(135deg,var(--ink),#1d4058);color:#fff;border:0}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(10,23,36,.12)}
+.hero-panel{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,250,241,.96),rgba(255,250,241,.76));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;display:flex;flex-direction:column;justify-content:space-between}.hero-panel:before{content:"";position:absolute;right:-80px;top:-90px;width:220px;height:220px;border-radius:50%;background:rgba(18,164,166,.12)}.panel-title{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--teal);font-weight:900}.bigstat{font-family:Newsreader,Georgia,serif;font-size:76px;line-height:.88;font-weight:800;letter-spacing:-.07em;margin:16px 0 8px;color:var(--ink)}.bigstat span{font-size:28px;color:var(--teal)}.hero-panel p{color:var(--muted);margin:0;font-size:16px;position:relative}.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}.mini{border:1px solid var(--line2);border-radius:18px;background:rgba(255,255,255,.56);padding:14px}.mini b{display:block;font-size:24px;letter-spacing:-.045em}.mini span{font-size:11px;color:var(--soft);font-weight:850;text-transform:uppercase;letter-spacing:.08em}.hero-note{margin-top:20px;padding:15px 16px;border-radius:18px;background:rgba(8,127,131,.08);border:1px solid rgba(8,127,131,.14);color:var(--ink2);font-weight:650}
+/* Global sections */
+.section{padding:58px 0}.section.alt{background:rgba(255,250,241,.28);border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,560px);gap:30px;align-items:start;margin-bottom:28px}.kicker{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--teal);font-weight:900;margin-bottom:9px}h2{font-family:Newsreader,Georgia,serif;font-size:clamp(34px,4vw,60px);line-height:.98;letter-spacing:-.05em;margin:0;text-wrap:balance}h2 em{color:var(--teal);font-style:italic;font-weight:500}.section-desc{position:relative;margin:0;color:#45586a;font-size:16px;line-height:1.66;background:rgba(255,250,241,.78);border:1px solid var(--line2);border-left:5px solid var(--teal);border-radius:20px;box-shadow:0 10px 28px rgba(10,23,36,.045);padding:17px 18px 17px 20px;font-weight:560}.section-desc:before{content:"Report insight";display:block;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:900}.card{background:rgba(255,250,241,.88);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow2);padding:24px}.card h3{margin:0 0 10px;font-size:21px;letter-spacing:-.025em}.card p{margin:0;color:var(--muted)}
+/* Research snapshot */
+.snapshot-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.snapshot-main{background:linear-gradient(135deg,var(--ink),#173a52);color:#fff;border:0}.snapshot-main p{color:rgba(255,255,255,.76)}.snapshot-main .pill{display:inline-flex;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.10);color:#baf3ee;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;margin-bottom:16px}.snapshot-main h3{font-family:Newsreader,Georgia,serif;font-size:42px;line-height:1.02;letter-spacing:-.045em;margin:0 0 12px}.snapshot-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.snapshot-metric{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:19px;padding:16px}.snapshot-metric b{display:block;font-size:30px;letter-spacing:-.05em;color:#fff}.snapshot-metric span{display:block;margin-top:4px;color:rgba(255,255,255,.66);font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.story-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.story-card{border-radius:22px;border:1px solid var(--line2);background:rgba(255,255,255,.48);padding:18px}.story-card .label{font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--teal);font-weight:900;margin-bottom:9px}.story-card p{font-size:15px;line-height:1.58}
+/* Insight cards */
+.insights{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.insight{min-height:252px;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,250,241,.97),rgba(250,240,225,.86));border:1px solid var(--line);border-radius:26px;box-shadow:0 18px 50px rgba(10,23,36,.07);padding:22px;transition:transform .22s,box-shadow .22s}.insight:hover{transform:translateY(-4px);box-shadow:0 25px 70px rgba(10,23,36,.12)}.insight:after{content:attr(data-no);position:absolute;right:16px;top:12px;font-family:Newsreader,Georgia,serif;font-size:88px;font-weight:800;color:rgba(8,127,131,.09);line-height:1}.insight .metric{font-family:Newsreader,Georgia,serif;font-size:46px;font-weight:800;letter-spacing:-.065em;color:var(--teal);line-height:1;margin:4px 0 14px}.insight h3{font-size:20px;line-height:1.14;margin:0 0 9px;letter-spacing:-.03em}.insight p{margin:0;color:var(--muted);font-size:15px}.bar{height:9px;background:rgba(10,23,36,.09);border-radius:999px;overflow:hidden;margin:18px 0 0}.bar i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--teal),var(--teal2));border-radius:inherit}
+/* Charting */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.chart-title{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:20px}.chart-title h3{font-size:22px;margin:0}.chart-title small{color:var(--soft);font-weight:800}.barrow{display:grid;grid-template-columns:172px 1fr 86px;gap:14px;align-items:center;margin:13px 0}.barrow label{font-weight:850;color:var(--ink);font-size:14px}.track{height:15px;background:rgba(10,23,36,.08);border-radius:999px;overflow:hidden}.fill{height:100%;width:var(--w);border-radius:inherit;background:linear-gradient(90deg,var(--teal),var(--teal2));animation:grow .9s cubic-bezier(.22,1,.36,1)}.fill.cite{background:linear-gradient(90deg,var(--amber),#ffb04a)}.fill.first{background:linear-gradient(90deg,var(--blue),#4e90c5)}.val{text-align:right;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:800}@keyframes grow{from{width:0}}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin:-4px 0 18px}.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}.legend .m{background:var(--teal)}.legend .c{background:var(--amber)}.legend .f{background:var(--blue)}
+.callout{margin-top:18px;border-radius:22px;border:1px solid rgba(8,127,131,.14);background:linear-gradient(135deg,rgba(8,127,131,.08),rgba(255,250,241,.65));padding:18px}.callout b{display:block;color:var(--ink);margin-bottom:4px}.callout p{color:var(--muted);font-size:15px;line-height:1.6}.funnel{display:grid;grid-template-columns:1fr;gap:12px}.funnel-step{display:grid;grid-template-columns:180px 1fr 70px;gap:16px;align-items:center;padding:12px;border:1px solid var(--line2);border-radius:18px;background:rgba(255,255,255,.48)}.funnel-step b{font-size:15px}.funnel-step span{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:800}.funnel-fill{height:42px;width:var(--w);border-radius:14px;background:linear-gradient(90deg,rgba(8,127,131,.92),rgba(18,164,166,.55));display:flex;align-items:center;justify-content:flex-end;padding-right:12px;color:#fff;font-weight:900;min-width:58px}
+/* Brands */
+.brand-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.brand-card{background:rgba(255,250,241,.9);border:1px solid var(--line);border-radius:26px;padding:20px;box-shadow:0 12px 36px rgba(10,23,36,.06);transition:transform .22s,box-shadow .22s}.brand-card:hover{transform:translateY(-4px);box-shadow:0 20px 52px rgba(10,23,36,.10)}.brand-card h3{font-size:25px;margin:0 0 4px;letter-spacing:-.045em}.brand-card small{color:var(--soft);font-weight:850}.brand-card .score{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.score div{background:rgba(255,255,255,.58);border:1px solid var(--line2);border-radius:16px;padding:10px}.score b{display:block;font-size:20px;letter-spacing:-.04em}.score span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);font-weight:900}.opportunity-map{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.op-card{border-radius:24px;border:1px solid var(--line);background:rgba(255,250,241,.88);padding:20px}.op-card .op-icon{width:40px;height:40px;border-radius:15px;display:grid;place-items:center;background:rgba(8,127,131,.1);color:var(--teal);font-weight:900;margin-bottom:12px}.op-card h3{font-size:20px;margin:0 0 8px;letter-spacing:-.025em}.op-card p{font-size:15px;color:var(--muted);margin:0}.op-card strong{color:var(--ink)}
+/* Findings and recommendations */
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.finding{background:rgba(255,250,241,.9);border:1px solid var(--line);border-radius:26px;padding:24px;position:relative;overflow:hidden;min-height:220px}.finding:before{content:"";position:absolute;inset:auto -50px -70px auto;width:170px;height:170px;border-radius:50%;background:rgba(8,127,131,.08)}.finding h3{font-size:22px;line-height:1.13;margin:0 0 10px;letter-spacing:-.032em}.finding p{color:var(--muted);margin:0}.finding strong{color:var(--ink)}.recommendations{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.rec{border-radius:22px;border:1px solid var(--line);background:rgba(255,250,241,.9);padding:18px}.rec .num{width:32px;height:32px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:900;margin-bottom:13px}.rec h3{font-size:17px;margin:0 0 8px;line-height:1.18}.rec p{font-size:14px;color:var(--muted);margin:0;line-height:1.56}
+.intent-table{display:grid;grid-template-columns:1.15fr .9fr .95fr 1.2fr;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:rgba(255,250,241,.9)}.intent-table div{padding:15px;border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);font-size:15px;line-height:1.58}.intent-table div:nth-child(4n){border-right:0}.intent-table .head{background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:900}.chip{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;background:rgba(8,127,131,.1);color:var(--teal)}
+/* Evidence table */
+.table-card{padding:0;overflow:hidden}.tools{display:grid;grid-template-columns:180px 180px 180px 180px 1fr;gap:10px;padding:16px;border-bottom:1px solid var(--line2);background:rgba(255,255,255,.44)}select,input{border:1px solid var(--line);border-radius:999px;background:#fffaf1;min-height:42px;padding:0 14px;font:inherit;color:var(--ink);font-weight:750;min-width:0}input{min-width:220px}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse}th{position:sticky;top:0;z-index:1;background:#fff4dd;text-align:left;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--soft);padding:14px}td{padding:15px 14px;border-top:1px solid var(--line2);vertical-align:top;font-size:14px}tbody tr:hover{background:rgba(255,255,255,.56)}td:nth-child(3){min-width:310px;max-width:420px}.tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;white-space:nowrap}.tag.cited{background:rgba(196,106,0,.12);color:#9a5200}.tag.mentioned{background:rgba(8,127,131,.12);color:var(--teal)}.tag.miss{background:rgba(10,23,36,.08);color:var(--muted)}.tag:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.row-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.micro{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);background:rgba(10,23,36,.055);border-radius:999px;padding:4px 7px}.table-note{padding:13px 16px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;gap:16px;align-items:center;color:var(--muted);font-size:13px;background:rgba(255,255,255,.35)}
+/* Method and strategic takeaway */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.method .card{min-height:184px}.method .num{width:36px;height:36px;border-radius:13px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:900;font-family:'IBM Plex Mono',monospace;margin-bottom:16px}.takeaway{background:linear-gradient(135deg,#0a1724,#17354c);color:#fff;border:0}.takeaway h2{color:#fff}.takeaway .section-desc{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);border-left-color:#9af2eb;color:rgba(255,255,255,.82)}.takeaway .section-desc:before{color:#9af2eb}.takeaway-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.takeaway .card{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);box-shadow:none;color:#fff}.takeaway .card p{color:rgba(255,255,255,.76)}.takeaway .card h3{color:#fff}.final-list{display:grid;gap:12px}.final-list div{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11)}.final-list b{color:#9af2eb}.footer{padding:44px 0;background:linear-gradient(135deg,var(--ink),#17354c);color:#fff}.footer .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer p{margin:0;color:rgba(255,255,255,.72)}.footer a{color:#fff;text-decoration:none;font-weight:850}.back{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;border:0;background:var(--ink);color:#fff;display:grid;place-items:center;box-shadow:0 16px 34px rgba(10,23,36,.25);cursor:pointer}.fade{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}.fade.show{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media (max-width:1060px){.hero-grid,.snapshot-grid,.grid-2,.grid-3,.takeaway-grid{grid-template-columns:1fr}.insights,.brand-cards,.method,.findings,.opportunity-map{grid-template-columns:repeat(2,1fr)}.recommendations{grid-template-columns:repeat(2,1fr)}.section-head{grid-template-columns:1fr}.section-desc{max-width:100%}.hero-panel{order:2}.tools{grid-template-columns:repeat(2,minmax(0,1fr))}.tools input{grid-column:1/-1}}
+@media (max-width:760px){.wrap{width:min(100% - 28px,var(--max))}.top-inner{min-height:auto;padding:12px 0;align-items:flex-start;flex-direction:column}.nav-toggle{display:inline-flex;align-items:center;gap:8px}.nav-toggle:after{content:"☰";font-size:15px}nav{width:100%;display:none;border-radius:20px;align-items:flex-start;flex-wrap:wrap}nav.open{display:flex}.hero{padding:44px 0 28px}h1{font-size:clamp(42px,13vw,60px);line-height:1.03;max-width:10.8ch}.lead{font-size:17px}.mini-grid,.snapshot-metrics,.story-cards,.insights,.brand-cards,.method,.findings,.opportunity-map,.recommendations{grid-template-columns:1fr}.barrow,.funnel-step{grid-template-columns:1fr;gap:8px}.val{text-align:left}.intent-table{grid-template-columns:1fr}.intent-table div{border-right:0}.tools{grid-template-columns:1fr}.table-note{display:block}.footer .wrap{display:block}.back{width:44px;height:44px}.section{padding:44px 0}}
+@media (max-width:520px){.buttons{display:grid}.btn{width:100%}.bigstat{font-size:60px}.snapshot-main h3{font-size:34px}.table-scroll table{min-width:900px}.brand span{white-space:normal}.hero-panel{padding:22px}.card{padding:20px}}
+
+/* ------------------------------------------------------------
+   HERO PANEL SPACING FIX
+   Removes the large empty gap between the main signal copy and
+   KPI tiles while keeping the premium dashboard layout intact.
+------------------------------------------------------------ */
+.hero-grid{
+  align-items:start !important;
+}
+.hero-panel{
+  justify-content:flex-start !important;
+  gap:22px !important;
+  min-height:auto !important;
+  padding:30px !important;
+}
+.hero-panel > div:first-child{
+  flex:0 0 auto;
+}
+.hero-panel .bigstat{
+  margin:12px 0 12px !important;
+  font-size:clamp(60px,6vw,78px) !important;
+  line-height:.9 !important;
+}
+.hero-panel p{
+  max-width:34ch;
+  line-height:1.55;
+}
+.hero-panel .mini-grid{
+  margin-top:0 !important;
+}
+.hero-panel .mini{
+  padding:16px !important;
+}
+@media (max-width:980px){
+  .hero-panel{
+    gap:18px !important;
+    padding:24px !important;
+  }
+  .hero-panel .mini-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media (max-width:560px){
+  .hero-panel .mini-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* Portfolio interlink strip */
+.researcher-strip{padding:38px 0 20px}.researcher-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;background:linear-gradient(135deg,#0a1724,#173a52);color:#fff;border-radius:26px;padding:24px 26px;box-shadow:0 18px 56px rgba(10,23,36,.16);border:1px solid rgba(255,255,255,.08)}.researcher-box p{margin:6px 0 0;color:rgba(255,255,255,.72);line-height:1.6}.researcher-box h2{font-family:Inter,system-ui,sans-serif;font-size:24px;line-height:1.15;letter-spacing:-.03em;margin:0}.researcher-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:12px 18px;border-radius:999px;background:#fff;color:#0a1724;text-decoration:none;font-weight:900;white-space:nowrap}.researcher-link:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}@media(max-width:760px){.researcher-box{grid-template-columns:1fr}.researcher-link{width:100%}}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand"><div class="logo">GVI</div><span>B2B SaaS AI Visibility Report</span></div>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="mainNav">Menu</button>
+    <nav id="mainNav" aria-label="Primary navigation">
+      <a href="#story">Story</a><a href="#snapshot">Snapshot</a><a href="#platforms">Platforms</a><a href="#brands">Brands</a><a href="#findings">Findings</a><a href="#actions">Actions</a><a href="#evidence">Evidence</a><a href="#method">Method</a><a href="https://deepanshu56.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Portfolio ↗</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="story">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow fade">GEO Visibility Index · CRM & Sales Sample</div>
+      <h1 class="fade">AI knows the brands. It does not always <em>cite</em> them.</h1>
+      <p class="lead fade">A data-led research report on how B2B SaaS brands appear inside AI-generated answers. The current CRM & Sales sample shows the core GEO problem: <strong>brand recall is high, but owned-source authority is much harder to earn.</strong></p>
+      <div class="buttons fade">
+        <a class="btn primary" href="#findings">View research findings</a>
+        <a class="btn" href="#evidence">Inspect evidence</a>
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/18Baxi6elDnHpEAZQvWl-gog9V7841nVYOakbnKnZbYg/edit?gid=453267514#gid=453267514" target="_blank" rel="noopener">Open source tracker ↗</a><a class="btn" href="https://deepanshu56.github.io/portfolio/" target="_blank" rel="noopener noreferrer">View portfolio ↗</a>
+      </div>
+      <div class="hero-note fade"><strong>Core story:</strong> AI answer engines already recognise major SaaS brands. The competitive advantage now shifts from “being mentioned” to “being cited, ranked clearly, and framed accurately.”</div>
+    </div>
+    <aside class="hero-panel fade" aria-label="Current research signal">
+      <div>
+        <div class="panel-title">Current dataset signal</div>
+        <div class="bigstat" id="heroCitationRate">—<span>%</span></div>
+        <p id="heroSignalText">Owned-source citation rate among brand mentions.</p>
+      </div>
+      <div class="mini-grid">
+        <div class="mini"><b id="miniAnswers">—</b><span>scored answers</span></div>
+        <div class="mini"><b id="miniMentions">—</b><span>brand mentions</span></div>
+        <div class="mini"><b id="miniCitations">—</b><span>owned citations</span></div>
+        <div class="mini"><b id="miniFirst">—</b><span>first-position mentions</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="section" id="snapshot">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Research snapshot</div><h2>The report starts with a measurable <em>visibility gap.</em></h2></div>
+      <p class="section-desc">This snapshot turns the spreadsheet into an executive view: how often brands appear, how often they lead the answer, and how often the answer cites the brand’s own website.</p>
+    </div>
+    <div class="snapshot-grid">
+      <article class="card snapshot-main fade">
+        <span class="pill">103 scored answers · 4 CRM brands · 3 AI platforms</span>
+        <h3>Mentioned often. Cited much less often.</h3>
+        <p>The early sample shows strong AI recall for well-known SaaS brands, but source attribution lags. This is the gap SaaS teams need to close: make owned pages good enough to be referenced, not just remembered.</p>
+        <div class="snapshot-metrics" id="snapshotMetrics"></div>
+      </article>
+      <div class="card fade">
+        <h3>What this means for SaaS teams</h3>
+        <div class="story-cards">
+          <div class="story-card"><div class="label">Visibility</div><p>AI can name a brand without sending any visible source signal to the brand’s website.</p></div>
+          <div class="story-card"><div class="label">Trust</div><p>A citation is a stronger signal than a mention because it connects the answer to an owned source.</p></div>
+          <div class="story-card"><div class="label">Positioning</div><p>First-position answers show narrative leadership, but still need citation support.</p></div>
+          <div class="story-card"><div class="label">Opportunity</div><p>Comparison, pricing, use-case and integration pages are the content assets most likely to influence future AI answers.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Executive signals</div><h2>Four numbers tell the story in seconds.</h2></div>
+      <p class="section-desc">The cards below are not generic KPIs. Each one answers a practical AI-search question: does the brand appear, does it lead, does it get cited, and how crowded is the answer set?</p>
+    </div>
+    <div class="insights" id="insightCards"></div>
+  </div>
+</section>
+<section class="section" id="platforms">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Platform behavior</div><h2>Google AI Overview behaves more like a <em>citation surface.</em></h2></div>
+      <p class="section-desc">ChatGPT and Perplexity produce high brand recall, but Google AI Overview is the platform most likely to attach a visible source. That means GEO strategy should be measured by platform, not averaged into one blended score.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card chart fade">
+        <div class="chart-title"><h3>Mention rate vs citation rate</h3><small>by platform</small></div>
+        <div class="legend"><span><i class="m"></i>Mentioned</span><span><i class="c"></i>Owned citation</span></div>
+        <div id="platformBars"></div>
+        <div class="callout"><b>Business implication</b><p>Do not judge AI visibility using one platform only. A brand may be visible in ChatGPT, weakly sourced in Perplexity, and citation-visible in Google AI Overview.</p></div>
+      </div>
+      <div class="card fade">
+        <div class="chart-title"><h3>The Visibility Gap</h3><small id="gapLabel">current sample</small></div>
+        <div class="funnel" id="funnel"></div>
+        <div class="callout"><b>Action opportunity</b><p>Move from brand awareness to source authority: create pages that answer buyer questions clearly enough for AI systems to cite them.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section alt" id="brands">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Brand opportunity map</div><h2>Different brands win — and lose — in different ways.</h2></div>
+      <p class="section-desc">A strong AI answer can still create three different outcomes: brand mention, first-position recommendation, or owned-domain citation. The brand map separates those outcomes so the next content move is clearer.</p>
+    </div>
+    <div class="brand-cards" id="brandCards"></div>
+    <div class="opportunity-map">
+      <article class="op-card fade"><div class="op-icon">1</div><h3>Citation improvement</h3><p><strong>High mention, low citation</strong> brands need stronger owned pages: pricing, alternatives, comparison, integration and use-case content.</p></article>
+      <article class="op-card fade"><div class="op-icon">2</div><h3>Positioning improvement</h3><p><strong>Mentioned but not leading</strong> brands need clearer category language that AI can reuse confidently in summaries and comparisons.</p></article>
+      <article class="op-card fade"><div class="op-icon">3</div><h3>Competitor differentiation</h3><p><strong>Shortlist-heavy queries</strong> require differentiated proof: use-case specificity, product depth, pricing clarity, and source-backed claims.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="findings">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Research findings</div><h2>The strongest story is the gap between <em>being known</em> and <em>being trusted.</em></h2></div>
+      <p class="section-desc">These findings translate the tracker into a research story a non-technical reader can understand: AI can remember brands, rank brands, and cite brands — but those three outcomes do not always happen together.</p>
+    </div>
+    <div class="findings" id="findingsGrid"></div>
+  </div>
+</section>
+<section class="section alt" id="actions">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">What SaaS teams should do next</div><h2>Turn AI visibility into a repeatable content system.</h2></div>
+      <p class="section-desc">The research points to practical moves: build pages AI can cite, clarify the brand’s market position, and track visibility by platform and buyer intent.</p>
+    </div>
+    <div class="recommendations">
+      <article class="rec fade"><div class="num">01</div><h3>Improve comparison pages</h3><p>AI uses “X vs Y” content to frame competitors. Make comparison pages fair, specific and easier to quote.</p></article>
+      <article class="rec fade"><div class="num">02</div><h3>Strengthen pricing pages</h3><p>Pricing prompts often generate direct answers. Clear plans, use cases and limitations improve citation-readiness.</p></article>
+      <article class="rec fade"><div class="num">03</div><h3>Clarify product positioning</h3><p>Use consistent category language so AI describes the product the way the company wants buyers to understand it.</p></article>
+      <article class="rec fade"><div class="num">04</div><h3>Make pages source-worthy</h3><p>Add updated facts, tables, FAQs, definitions and product proof that answer engines can attach to claims.</p></article>
+      <article class="rec fade"><div class="num">05</div><h3>Track by platform and intent</h3><p>Separate ChatGPT, Perplexity and Google AI Overview. Each surface behaves differently and needs its own benchmark.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="grid-2">
+      <div class="card chart fade"><div class="chart-title"><h3>Query intent performance</h3><small>which prompts create citations?</small></div><div id="intentBars"></div><div class="callout"><b>What the data shows</b><p>Commercial-intent queries do not behave the same. Pricing, comparison and use-case prompts need separate content strategies.</p></div></div>
+      <div class="card chart fade"><div class="chart-title"><h3>Answer format mix</h3><small>how AI structures results</small></div><div id="responseBars"></div><div class="callout"><b>Why it matters</b><p>List and comparison answers create crowded competitive surfaces. Direct answers create clearer positioning opportunities.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Interpretation map</div><h2>What the numbers mean in plain language.</h2></div>
+      <p class="section-desc">The scoring framework is simple: each row records whether a brand appeared, whether it was cited, where it appeared, and how crowded the answer was. The map below turns those signals into business actions.</p>
+    </div>
+    <div class="intent-table">
+      <div class="head">Tracker signal</div><div class="head">What it means</div><div class="head">Why it matters</div><div class="head">Content move</div>
+      <div><span class="chip">Mentioned = Yes</span></div><div>AI knows the brand exists.</div><div>Awareness is present, but not necessarily source authority.</div><div>Strengthen comparison, use-case and pricing pages.</div>
+      <div><span class="chip">Cited = Yes</span></div><div>AI used or surfaced the brand’s own domain.</div><div>This is the closest AI-search equivalent to earning source visibility.</div><div>Make owned pages clearer, fresher and citation-worthy.</div>
+      <div><span class="chip">4+ competitors</span></div><div>The answer is a crowded shortlist.</div><div>Even visible brands may be diluted by competitors.</div><div>Create stronger differentiated category content.</div>
+      <div><span class="chip">1st position</span></div><div>The brand leads the answer narrative.</div><div>Positioning is strong even if no citation is attached.</div><div>Turn winning language into reusable messaging.</div>
+    </div>
+  </div>
+</section>
+<section class="section" id="evidence">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Evidence table</div><h2>Every chart is backed by a scored row.</h2></div>
+      <p class="section-desc">This table keeps the research inspectable without forcing readers into the spreadsheet. Filter by brand, platform, outcome or intent to see the row-level evidence behind the visuals.</p>
+    </div>
+    <div class="card table-card fade">
+      <div class="tools">
+        <select id="brandFilter" aria-label="Filter by brand"><option value="All">All brands</option></select>
+        <select id="platformFilter" aria-label="Filter by platform"><option value="All">All platforms</option></select>
+        <select id="outcomeFilter" aria-label="Filter by outcome"><option value="All">All outcomes</option><option value="Cited">Cited</option><option value="Mentioned">Mentioned</option><option value="Not surfaced">Not surfaced</option></select>
+        <select id="intentFilter" aria-label="Filter by query intent"><option value="All">All intents</option></select>
+        <input id="searchBox" placeholder="Search query, brand, platform or takeaway" aria-label="Search evidence rows" />
+      </div>
+      <div class="table-scroll"><table><thead><tr><th>Entry</th><th>Brand</th><th>Query</th><th>Platform</th><th>Intent</th><th>Outcome</th><th>Takeaway</th></tr></thead><tbody id="rowsBody"></tbody></table></div>
+      <div class="table-note"><span id="tableCount">Showing rows</span><span>Source: scored CRM & Sales tracker snapshot</span></div>
+    </div>
+  </div>
+</section>
+<section class="section alt" id="method">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Methodology</div><h2>Simple scoring, repeatable across 900 answers.</h2></div>
+      <p class="section-desc">The full study design covers 30 B2B SaaS companies, 10 commercial queries per company, and 3 AI platforms — producing 900 scored answers using the same GVI-6 framework.</p>
+    </div>
+    <div class="method">
+      <article class="card fade"><div class="num">1</div><h3>Run the same buyer-style query</h3><p>Each company is tested across commercial-intent prompts: alternatives, pricing, integrations, category searches and “best for” use cases.</p></article>
+      <article class="card fade"><div class="num">2</div><h3>Compare three AI surfaces</h3><p>The same query is checked across ChatGPT, Perplexity and Google AI Overview to expose platform-level differences.</p></article>
+      <article class="card fade"><div class="num">3</div><h3>Score visibility signals</h3><p>Each answer is scored for mention, owned citation, citation position, competitor density, response format and confidence.</p></article>
+      <article class="card fade"><div class="num">4</div><h3>Translate rows into strategy</h3><p>The dashboard turns scored answers into a clear story about AI recall, source authority, platform behavior and content opportunity.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section takeaway" id="strategic-takeaway">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Strategic takeaway</div><h2>AI visibility is becoming a source-authority game.</h2></div>
+      <p class="section-desc">The practical conclusion is simple: SaaS brands should not only ask “Are we mentioned?” They should ask “Are we cited, are we first, and is the answer using the positioning we want?”</p>
+    </div>
+    <div class="takeaway-grid">
+      <article class="card fade"><h3>The research signal</h3><p>Major SaaS brands already appear in AI-generated answers. The harder challenge is earning citations from owned pages and controlling how the brand is described in comparison-heavy answers.</p></article>
+      <div class="final-list fade">
+        <div><b>01</b><span>Measure mentions and citations separately.</span></div>
+        <div><b>02</b><span>Prioritize comparison, pricing, integration and use-case content.</span></div>
+        <div><b>03</b><span>Build platform-specific GEO reporting instead of one blended score.</span></div>
+        <div><b>04</b><span>Use AI answer language to refine category positioning.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="researcher-strip" aria-label="Researcher portfolio link"><div class="wrap researcher-box"><div><h2>Research built by Deepanshu Sharma</h2><p>See the broader SEO portfolio behind this report: B2B SaaS SEO work, automation projects, analytics dashboards, and content strategy case studies.</p></div><a class="researcher-link" href="https://deepanshu56.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Open portfolio ↗</a></div></section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div><strong>B2B SaaS AI Search Visibility Report</strong><p>Current dashboard snapshot: CRM & Sales sample. Full study design: 900 answers across 30 SaaS brands.</p></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="https://docs.google.com/spreadsheets/d/18Baxi6elDnHpEAZQvWl-gog9V7841nVYOakbnKnZbYg/edit?gid=453267514#gid=453267514" target="_blank" rel="noopener">Source tracker ↗</a><a href="https://deepanshu56.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Portfolio ↗</a></div>
+  </div>
+</footer>
+<button class="back" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+/* ============================================================
+   Dataset preserved from the uploaded HTML file.
+   All charts, filters and evidence rows below are rendered from this array.
+   ============================================================ */
+const rows=[{"id":"E0001","brand":"HubSpot","query":"Is HubSpot worth it for a startup in 2026?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Evaluation","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0002","brand":"HubSpot","query":"Is HubSpot worth it for a startup in 2026?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Evaluation","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0003","brand":"HubSpot","query":"Is HubSpot worth it for a startup in 2026?","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Evaluation","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0004","brand":"HubSpot","query":"Best free CRM for small businesses","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0005","brand":"HubSpot","query":"Best free CRM for small businesses","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"2","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0006","brand":"HubSpot","query":"Best free CRM for small businesses","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"1","response":"List","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0007","brand":"HubSpot","query":"HubSpot vs Salesforce for a 50-person B2B startup","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0008","brand":"HubSpot","query":"HubSpot vs Salesforce for a 50-person B2B startup","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0009","brand":"HubSpot","query":"HubSpot vs Salesforce for a 50-person B2B startup","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0010","brand":"HubSpot","query":"HubSpot vs Freshworks for a scrappy sales team","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0011","brand":"HubSpot","query":"HubSpot vs Freshworks for a scrappy sales team","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0012","brand":"HubSpot","query":"HubSpot vs Freshworks for a scrappy sales team","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0013","brand":"HubSpot","query":"CRM that combines marketing automation and sales pipeline","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0014","brand":"HubSpot","query":"CRM that combines marketing automation and sales pipeline","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0015","brand":"HubSpot","query":"CRM that combines marketing automation and sales pipeline","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0016","brand":"HubSpot","query":"What are the best alternatives to HubSpot?","platform":"ChatGPT","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"1","response":"List","intent":"Comparison / alternatives","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0017","brand":"HubSpot","query":"What are the best alternatives to HubSpot?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0018","brand":"HubSpot","query":"What are the best alternatives to HubSpot?","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0019","brand":"HubSpot","query":"Is HubSpot too expensive for a 10-person company?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Evaluation","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0020","brand":"HubSpot","query":"Is HubSpot too expensive for a 10-person company?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Evaluation","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0021","brand":"HubSpot","query":"Is HubSpot too expensive for a 10-person company?","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Evaluation","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0022","brand":"HubSpot","query":"CRM with native Gmail and Outlook integration","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Integration","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0023","brand":"HubSpot","query":"CRM with native Gmail and Outlook integration","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"2nd","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Integration","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0024","brand":"HubSpot","query":"CRM with native Gmail and Outlook integration","platform":"Google AI Overview","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"0","response":"Refused","intent":"Integration","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0025","brand":"HubSpot","query":"Best CRM for inbound marketing teams","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"1","response":"List","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0026","brand":"HubSpot","query":"Best CRM for inbound marketing teams","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0027","brand":"HubSpot","query":"Best CRM for inbound marketing teams","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0028","brand":"HubSpot","query":"Most recommended CRM software by SaaS founders","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Other","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0029","brand":"HubSpot","query":"Most recommended CRM software by SaaS founders","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Other","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0030","brand":"HubSpot","query":"Most recommended CRM software by SaaS founders","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Position needs review","competitors":"4+","response":"List","intent":"Other","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0031","brand":"Salesforce","query":"Is Salesforce still the best CRM in 2026?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0032","brand":"Salesforce","query":"Is Salesforce still the best CRM in 2026?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"2nd","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0033","brand":"Salesforce","query":"Is Salesforce still the best CRM in 2026?","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Position needs review","competitors":"0","response":"Direct answer","intent":"Category / use-case","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0034","brand":"Salesforce","query":"Top CRM platforms for enterprise sales teams","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Other","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0035","brand":"Salesforce","query":"Top CRM platforms for enterprise sales teams","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Other","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0036","brand":"Salesforce","query":"Top CRM platforms for enterprise sales teams","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"0","response":"List","intent":"Other","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0037","brand":"Salesforce","query":"Salesforce vs HubSpot for a Series B SaaS company","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0038","brand":"Salesforce","query":"Salesforce vs HubSpot for a Series B SaaS company","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0039","brand":"Salesforce","query":"Salesforce vs HubSpot for a Series B SaaS company","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"2nd","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0040","brand":"Salesforce","query":"Salesforce vs Microsoft Dynamics 365 pros and cons","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0041","brand":"Salesforce","query":"Salesforce vs Microsoft Dynamics 365 pros and cons","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0042","brand":"Salesforce","query":"Salesforce vs Microsoft Dynamics 365 pros and cons","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0043","brand":"Salesforce","query":"CRM that can handle complex multi-product deal structures","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0044","brand":"Salesforce","query":"CRM that can handle complex multi-product deal structures","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0045","brand":"Salesforce","query":"CRM that can handle complex multi-product deal structures","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0046","brand":"Salesforce","query":"Alternatives to Salesforce for mid-market companies","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0047","brand":"Salesforce","query":"Alternatives to Salesforce for mid-market companies","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0048","brand":"Salesforce","query":"Alternatives to Salesforce for mid-market companies","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"Mentioned, position not captured","citationPosition":"Position needs review","competitors":"0","response":"List","intent":"Comparison / alternatives","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0049","brand":"Salesforce","query":"How much does Salesforce actually cost per user?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Pricing","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0050","brand":"Salesforce","query":"How much does Salesforce actually cost per user?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Pricing","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0051","brand":"Salesforce","query":"How much does Salesforce actually cost per user?","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"0","response":"Direct answer","intent":"Pricing","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0052","brand":"Salesforce","query":"Salesforce with built-in marketing automation","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Other","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0053","brand":"Salesforce","query":"Salesforce with built-in marketing automation","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Other","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0054","brand":"Salesforce","query":"Salesforce with built-in marketing automation","platform":"Google AI Overview","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"0","response":"Refused","intent":"Other","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0055","brand":"Salesforce","query":"Best CRM for financial services companies","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0056","brand":"Salesforce","query":"Best CRM for financial services companies","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0057","brand":"Salesforce","query":"Best CRM for financial services companies","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"0","response":"List","intent":"Category / use-case","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0058","brand":"Salesforce","query":"Which CRM do Fortune 500 sales leaders actually use?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Other","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0059","brand":"Salesforce","query":"Which CRM do Fortune 500 sales leaders actually use?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"0","response":"Direct answer","intent":"Other","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0060","brand":"Salesforce","query":"Which CRM do Fortune 500 sales leaders actually use?","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"4+","response":"Direct answer","intent":"Other","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0061","brand":"Freshworks","query":"Is Freshworks good for a small sales team?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Evaluation","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0062","brand":"Freshworks","query":"Is Freshworks good for a small sales team?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Evaluation","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0063","brand":"Freshworks","query":"Is Freshworks good for a small sales team?","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"1","response":"Comparison","intent":"Evaluation","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0064","brand":"Freshworks","query":"Best visual sales pipeline software","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"4th+","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0065","brand":"Freshworks","query":"Best visual sales pipeline software","platform":"Perplexity","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0066","brand":"Freshworks","query":"Best visual sales pipeline software","platform":"Google AI Overview","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0067","brand":"Freshworks","query":"Freshworks vs HubSpot for sales-led companies","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0068","brand":"Freshworks","query":"Freshworks vs HubSpot for sales-led companies","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"2nd","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0069","brand":"Freshworks","query":"Freshworks vs HubSpot for sales-led companies","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"2","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0070","brand":"Freshworks","query":"Freshworks vs Close CRM for outbound sales","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0071","brand":"Freshworks","query":"Freshworks vs Close CRM for outbound sales","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"2nd","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0072","brand":"Freshworks","query":"Freshworks vs Close CRM for outbound sales","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"2nd","citationPosition":"2nd","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0073","brand":"Freshworks","query":"CRM with kanban-style deal tracking","platform":"ChatGPT","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0074","brand":"Freshworks","query":"CRM with kanban-style deal tracking","platform":"Perplexity","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0075","brand":"Freshworks","query":"CRM with kanban-style deal tracking","platform":"Google AI Overview","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0076","brand":"Freshworks","query":"What are good alternatives to Freshworks?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0077","brand":"Freshworks","query":"What are good alternatives to Freshworks?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0078","brand":"Freshworks","query":"What are good alternatives to Freshworks?","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0079","brand":"Freshworks","query":"Freshworks pricing for a 5-person sales team","platform":"ChatGPT","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"1","response":"Direct answer","intent":"Pricing","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0080","brand":"Freshworks","query":"Freshworks pricing for a 5-person sales team","platform":"Perplexity","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Pricing","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0081","brand":"Freshworks","query":"Freshworks pricing for a 5-person sales team","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"0","response":"Direct answer","intent":"Pricing","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0082","brand":"Freshworks","query":"CRM that integrates with LinkedIn Sales Navigator","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"4th+","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Integration","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0083","brand":"Freshworks","query":"CRM that integrates with LinkedIn Sales Navigator","platform":"Perplexity","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Integration","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0084","brand":"Freshworks","query":"CRM that integrates with LinkedIn Sales Navigator","platform":"Google AI Overview","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Integration","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0087","brand":"Freshworks","query":"Best CRM for real estate agents","platform":"Google AI Overview","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0088","brand":"Freshworks","query":"Most reviewed CRMs on G2 for small teams","platform":"ChatGPT","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Other","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0089","brand":"Freshworks","query":"Most reviewed CRMs on G2 for small teams","platform":"Perplexity","cited":"No","mentioned":"No","mentionPosition":"Not mentioned","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Other","takeaway":"Target brand did not surface","publicStatus":"Not surfaced"},{"id":"E0090","brand":"Freshworks","query":"Most reviewed CRMs on G2 for small teams","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"4th+","citationPosition":"4th+","competitors":"4+","response":"List","intent":"Other","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0091","brand":"Close","query":"Is Close CRM good for cold outbound sales?","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"2","response":"Direct answer","intent":"Evaluation","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0092","brand":"Close","query":"Is Close CRM good for cold outbound sales?","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"3","response":"Direct answer","intent":"Evaluation","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0093","brand":"Close","query":"Is Close CRM good for cold outbound sales?","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"0","response":"Direct answer","intent":"Evaluation","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0094","brand":"Close","query":"Best CRM with built-in calling and email","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"3","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0095","brand":"Close","query":"Best CRM with built-in calling and email","platform":"Perplexity","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"2nd","competitors":"3","response":"List","intent":"Category / use-case","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0096","brand":"Close","query":"Best CRM with built-in calling and email","platform":"Google AI Overview","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0097","brand":"Close","query":"Close vs Freshworks for SDR teams","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0098","brand":"Close","query":"Close vs Freshworks for SDR teams","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0099","brand":"Close","query":"Close vs Freshworks for SDR teams","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0100","brand":"Close","query":"Close vs HubSpot for remote sales teams","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0101","brand":"Close","query":"Close vs HubSpot for remote sales teams","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0102","brand":"Close","query":"Close vs HubSpot for remote sales teams","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"1","response":"Comparison","intent":"Comparison / alternatives","takeaway":"Cited target brand source","publicStatus":"Cited"},{"id":"E0103","brand":"Close","query":"CRM with power dialer and email sequences in one","platform":"ChatGPT","cited":"No","mentioned":"Yes","mentionPosition":"2nd","citationPosition":"Not cited","competitors":"4+","response":"List","intent":"Category / use-case","takeaway":"Brand mentioned, no owned citation","publicStatus":"Mentioned"},{"id":"E0104","brand":"Close","query":"CRM with power dialer and email sequences in one","platform":"Perplexity","cited":"No","mentioned":"Yes","mentionPosition":"1st","citationPosition":"Not cited","competitors":"3","response":"List","intent":"Category / use-case","takeaway":"Brand surfaced first, no owned citation","publicStatus":"Mentioned"},{"id":"E0105","brand":"Close","query":"CRM with power dialer and email sequences in one","platform":"Google AI Overview","cited":"Yes","mentioned":"Yes","mentionPosition":"1st","citationPosition":"1st","competitors":"3","response":"List","intent":"Category / use-case","takeaway":"Cited target brand source","publicStatus":"Cited"}];
+
+const sheetLink='https://docs.google.com/spreadsheets/d/18Baxi6elDnHpEAZQvWl-gog9V7841nVYOakbnKnZbYg/edit?gid=453267514#gid=453267514';
+function isYes(v){return String(v||'').toLowerCase()==='yes'}
+function isFirst(v){return String(v||'').toLowerCase().startsWith('1st')}
+function pct(n,d){return d?Math.round((n/d)*1000)/10:0}
+function fmtPct(n){return Number(n).toFixed(Number.isInteger(n)?0:1)+'%'}
+function compactCompetitors(v){return String(v||'0').includes('4+')?4:Number(v||0)}
+const totals={
+  n:rows.length,
+  mentioned:rows.filter(r=>isYes(r.mentioned)).length,
+  cited:rows.filter(r=>isYes(r.cited)).length,
+  first:rows.filter(r=>isFirst(r.mentionPosition)).length,
+  crowded:rows.filter(r=>compactCompetitors(r.competitors)>=4).length,
+  brands:[...new Set(rows.map(r=>r.brand))].length,
+  platforms:[...new Set(rows.map(r=>r.platform))].length
+};
+totals.mentionRate=pct(totals.mentioned,totals.n);
+totals.citationRate=pct(totals.cited,totals.n);
+totals.citeFromMentionRate=pct(totals.cited,totals.mentioned);
+totals.firstRate=pct(totals.first,totals.n);
+totals.visibilityGap=Math.round((totals.mentionRate-totals.citationRate)*10)/10;
+function groupBy(key){const map={};rows.forEach(r=>{const k=typeof key==='function'?key(r):r[key];(map[k]||(map[k]=[])).push(r)});return Object.entries(map).map(([name,items])=>({name,items}))}
+function statFor(items){const n=items.length;const mentioned=items.filter(r=>isYes(r.mentioned)).length;const cited=items.filter(r=>isYes(r.cited)).length;const first=items.filter(r=>isFirst(r.mentionPosition)).length;const crowded=items.filter(r=>compactCompetitors(r.competitors)>=4).length;return{rows:n,mentioned,cited,first,crowded,mentionRate:pct(mentioned,n),citationRate:pct(cited,n),firstRate:pct(first,n),crowdedRate:pct(crowded,n)}}
+const platformStats=groupBy('platform').map(g=>({platform:g.name,...statFor(g.items)}));
+const brandStats=groupBy('brand').map(g=>({brand:g.name,...statFor(g.items)}));
+const intentStats=groupBy('intent').map(g=>({intent:g.name,...statFor(g.items)})).sort((a,b)=>b.rows-a.rows);
+const responseStats=groupBy('response').map(g=>({type:g.name,...statFor(g.items)})).sort((a,b)=>b.rows-a.rows);
+function barRow(label, primary, total, className=''){
+  const p=pct(primary,total);
+  return `<div class="barrow"><label>${label}</label><div class="track"><div class="fill ${className}" style="--w:${p}%"></div></div><div class="val">${primary}/${total}</div></div>`;
+}
+function outcomeTag(x){return x==='Cited'?'<span class="tag cited">Cited</span>':x==='Mentioned'?'<span class="tag mentioned">Mentioned</span>':'<span class="tag miss">Not surfaced</span>'}
+function setText(id,text){const el=document.getElementById(id); if(el) el.textContent=text}
+function renderHero(){
+  setText('miniAnswers',totals.n); setText('miniMentions',totals.mentioned); setText('miniCitations',totals.cited); setText('miniFirst',totals.first);
+  document.getElementById('heroCitationRate').innerHTML=`${totals.citeFromMentionRate}<span>%</span>`;
+  setText('heroSignalText',`Only ${totals.cited} of ${totals.mentioned} brand mentions become target-domain citations. This is the visibility gap SaaS teams need to close.`);
+  document.getElementById('snapshotMetrics').innerHTML=[
+    [`${totals.n}`,'scored answers'],[`${totals.mentioned}`,'brand mentions'],[`${totals.cited}`,'owned citations'],[`${totals.first}`,'first-position mentions']
+  ].map(([n,l])=>`<div class="snapshot-metric"><b>${n}</b><span>${l}</span></div>`).join('');
+  setText('gapLabel',`${totals.visibilityGap}-point mention-to-citation gap`);
+}
+function renderInsightCards(){
+  const cards=[
+    {no:'01',metric:fmtPct(totals.mentionRate),title:'AI recall is already strong.',copy:`${totals.mentioned} of ${totals.n} scored answers mention the tracked brand. Major CRM brands are present in AI recommendations.`,w:totals.mentionRate},
+    {no:'02',metric:fmtPct(totals.citationRate),title:'Owned-source citation is the bottleneck.',copy:`Only ${totals.cited} answers cite the target domain. Being named is not the same as earning a source link.`,w:totals.citationRate},
+    {no:'03',metric:fmtPct(totals.firstRate),title:'Answer position can be won.',copy:`${totals.first} answers place the tracked brand first. Narrative leadership is possible even before citation share catches up.`,w:totals.firstRate},
+    {no:'04',metric:fmtPct(pct(totals.crowded,totals.n)),title:'Broad prompts become shortlists.',copy:`${totals.crowded} answers include four or more competitors. Category-level GEO is a positioning battle, not just a visibility battle.`,w:pct(totals.crowded,totals.n)}
+  ];
+  document.getElementById('insightCards').innerHTML=cards.map(c=>`<article class="insight fade" data-no="${c.no}"><div class="metric">${c.metric}</div><h3>${c.title}</h3><p>${c.copy}</p><div class="bar"><i style="--w:${c.w}%"></i></div></article>`).join('');
+}
+function renderPlatformBars(){
+  document.getElementById('platformBars').innerHTML=platformStats.map(p=>`<div style="margin-bottom:24px"><div style="display:flex;justify-content:space-between;margin-bottom:9px;gap:12px"><strong>${p.platform}</strong><small class="mono" style="color:var(--muted)">${p.rows} answers</small></div>${barRow('Mentioned',p.mentioned,p.rows)}${barRow('Owned citation',p.cited,p.rows,'cite')}${barRow('First position',p.first,p.rows,'first')}</div>`).join('');
+}
+function renderFunnel(){
+  const steps=[['Scored answers',totals.n,totals.n],['Brand mentioned',totals.mentioned,totals.n],['First-position mention',totals.first,totals.n],['Owned citation',totals.cited,totals.n]];
+  document.getElementById('funnel').innerHTML=steps.map(s=>`<div class="funnel-step"><b>${s[0]}</b><div><div class="funnel-fill" style="--w:${Math.max(pct(s[1],s[2]),8)}%">${s[1]}</div></div><span>${fmtPct(pct(s[1],s[2]))}</span></div>`).join('');
+}
+function brandNarrative(b){
+  if(b.citationRate>=30) return 'Stronger source authority signal in this sample.';
+  if(b.mentionRate>=80 && b.citationRate<20) return 'Known by AI, but owned pages need stronger citation pull.';
+  if(b.firstRate>=50) return 'Strong answer position; citation strategy should follow.';
+  return 'Needs clearer positioning and stronger owned-source proof.';
+}
+function renderBrands(){
+  document.getElementById('brandCards').innerHTML=brandStats.map(b=>`<article class="brand-card fade"><h3>${b.brand}</h3><small>${b.rows} scored answers · ${brandNarrative(b)}</small><div class="score"><div><b>${b.mentionRate}%</b><span>Mention</span></div><div><b>${b.citationRate}%</b><span>Citation</span></div><div><b>${b.firstRate}%</b><span>First</span></div></div></article>`).join('');
+}
+function renderFindings(){
+  const gaio=platformStats.find(p=>p.platform==='Google AI Overview');
+  const findings=[
+    ['Brand recall and source attribution are different outcomes.',`The sample contains <strong>${totals.mentioned} mentions</strong> but only <strong>${totals.cited} owned-domain citations</strong>. A brand can be present in the answer while its website receives no visible citation.`],
+    ['Google AI Overview carries most citation value.',`Google AI Overview accounts for <strong>${gaio?gaio.cited:18} of ${totals.cited}</strong> owned citations in this sample. Citation strategy should be evaluated separately for each AI surface.`],
+    ['Comparison prompts expose market positioning.',`“X vs Y” prompts reveal how AI describes each brand: Freshworks as affordable and sales-first, Close as outbound execution, Salesforce as enterprise default, and HubSpot as a broad platform.`],
+    ['Broad category searches become shortlists.',`List-style answers often include several competitors. Differentiation matters more than simply being included.`],
+    ['First position is not the same as trust.',`<strong>${totals.first}</strong> answers place the target brand first, yet many do not cite the brand’s own site. Answer rank and citation authority should be measured separately.`],
+    ['The benchmark can scale without changing the method.',`The full study design expands to <strong>900 scored answers</strong> across 30 B2B SaaS brands, making the final dataset comparable by platform, category, query intent, and response type.`]
+  ];
+  document.getElementById('findingsGrid').innerHTML=findings.map((f,i)=>`<article class="finding fade"><h3>${i+1}. ${f[0]}</h3><p>${f[1]}</p></article>`).join('');
+}
+function renderIntentBars(){
+  document.getElementById('intentBars').innerHTML=intentStats.map(x=>`<div style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;margin-bottom:8px;gap:12px"><strong>${x.intent}</strong><small class="mono" style="color:var(--muted)">${x.rows} answers</small></div>${barRow('Mentioned',x.mentioned,x.rows)}${barRow('Cited',x.cited,x.rows,'cite')}</div>`).join('');
+}
+function renderResponseBars(){
+  document.getElementById('responseBars').innerHTML=responseStats.map(x=>`<div style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;margin-bottom:8px;gap:12px"><strong>${x.type}</strong><small class="mono" style="color:var(--muted)">${x.rows} answers</small></div>${barRow('Count',x.rows,totals.n)}${barRow('Cited',x.cited,x.rows,'cite')}</div>`).join('');
+}
+function initFilters(){
+  const brands=[...new Set(rows.map(r=>r.brand))];
+  const platforms=[...new Set(rows.map(r=>r.platform))];
+  const intents=[...new Set(rows.map(r=>r.intent))].sort();
+  brandFilter.innerHTML='<option value="All">All brands</option>'+brands.map(x=>`<option>${x}</option>`).join('');
+  platformFilter.innerHTML='<option value="All">All platforms</option>'+platforms.map(x=>`<option>${x}</option>`).join('');
+  intentFilter.innerHTML='<option value="All">All intents</option>'+intents.map(x=>`<option>${x}</option>`).join('');
+  [brandFilter,platformFilter,outcomeFilter,intentFilter,searchBox].forEach(el=>el.addEventListener('input',renderRows));
+}
+function renderRows(){
+  const q=searchBox.value.toLowerCase();
+  const b=brandFilter.value,p=platformFilter.value,o=outcomeFilter.value,i=intentFilter.value;
+  const filtered=rows.filter(r=>(b==='All'||r.brand===b)&&(p==='All'||r.platform===p)&&(o==='All'||r.publicStatus===o)&&(i==='All'||r.intent===i)&&(!q||Object.values(r).join(' ').toLowerCase().includes(q)));
+  rowsBody.innerHTML=filtered.slice(-100).reverse().map(r=>`<tr><td><strong>${r.id}</strong><div class="row-meta"><span class="micro">${r.response}</span></div></td><td>${r.brand}</td><td>${r.query}</td><td>${r.platform}</td><td>${r.intent}</td><td>${outcomeTag(r.publicStatus)}</td><td>${r.takeaway}<div class="row-meta"><span class="micro">Mention: ${r.mentionPosition}</span><span class="micro">Citation: ${r.citationPosition}</span><span class="micro">Competitors: ${r.competitors}</span></div></td></tr>`).join('');
+  tableCount.textContent=`Showing ${Math.min(filtered.length,100)} of ${filtered.length} matching rows`;
+}
+function reveal(){document.querySelectorAll('.fade').forEach(el=>{const r=el.getBoundingClientRect(); if(r.top<innerHeight-70) el.classList.add('show')})}
+function activeNav(){let current='story';document.querySelectorAll('section[id]').forEach(s=>{if(s.getBoundingClientRect().top<130) current=s.id});document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current))}
+function initNav(){const btn=document.querySelector('.nav-toggle'); const nav=document.getElementById('mainNav'); btn&&btn.addEventListener('click',()=>{nav.classList.toggle('open'); btn.setAttribute('aria-expanded',nav.classList.contains('open'))}); nav&&nav.addEventListener('click',e=>{if(e.target.tagName==='A') nav.classList.remove('open')})}
+renderHero();renderInsightCards();renderPlatformBars();renderFunnel();renderBrands();renderFindings();renderIntentBars();renderResponseBars();initFilters();renderRows();initNav();reveal();activeNav();addEventListener('scroll',()=>{reveal();activeNav()},{passive:true});
+</script>
+</body>
+</html>
