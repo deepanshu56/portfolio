@@ -24,18 +24,6 @@ This single-page portfolio showcases SEO strategy work, real case studies, and d
 - HTML, CSS, and JavaScript (static single-page site)
 - Hosted on **GitHub Pages**
 
-## Local Development
-
-This is a static site, so no build step is required:
-
-```bash
-# Clone the repository
-git clone https://github.com/deepanshu56/portfolio.git
-cd portfolio
-
-# Open index.html in your browser
-```
-
 ## Contact
 
 - **Email:** deepanshusharma423@gmail.com
