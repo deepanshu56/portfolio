@@ -1,4 +1,4 @@
-# Deepanshu Sharma — Portfolio
+# Deepanshu Sharma - Portfolio
 
 A personal portfolio website for **Deepanshu Sharma**, a B2B SaaS SEO & content strategist with 3+ years of experience growing organic traffic across US and UK markets.
 
